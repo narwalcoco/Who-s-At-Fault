@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Spinner</title>
+<meta name="theme-color" content="#f5f2fc">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-blob b1" aria-hidden="true"></div>
+<div class="bg-blob b2" aria-hidden="true"></div>
+
+<main class="card">
+  <button id="muteBtn" class="mute" aria-pressed="false" title="Toggle sound">🔊</button>
+
+  <header class="head">
+    <h1>Ultimate <span>Spinner</span></h1>
+    <p class="tagline">Spin the wheel. Let fate decide. ✨</p>
+  </header>
+
+  <section class="controls">
+    <label class="lbl" for="namesInput">Names or items (comma separated)</label>
+    <div class="input-row">
+      <input id="namesInput" type="text" autocomplete="off" spellcheck="false"
+             placeholder="e.g. Sarah, Bob, Dev…" enterkeyhint="go">
+      <button id="spinBtn" class="btn primary">🎲 Spin</button>
+    </div>
+    <p id="countLabel" class="count">Add some names to get started!</p>
+  </section>
+
+  <section class="wheel-area">
+    <div id="wheelWrap" class="wheel-wrap">
+      <div id="pointer" class="pointer" aria-hidden="true"></div>
+      <div class="pointer-ring" aria-hidden="true"></div>
+      <canvas id="wheel" role="img" aria-label="Prize wheel"></canvas>
+    </div>
+  </section>
+
+  <footer class="foot">Results are certified random* <small>*by the wheel’s lawyers</small></footer>
+</main>
+
+<div id="resultOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+  <div class="modal result-modal">
+    <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+    <div id="resultEmoji" class="result-emoji">😈</div>
+    <h2 id="resultTitle" class="result-title"></h2>
+    <p id="resultSubtitle" class="result-sub"></p>
+    <div class="modal-actions">
+      <button id="againBtn" class="btn primary">🔄 Spin again</button>
+      <button id="closeResultBtn" class="btn ghost">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="customOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="customTitle">
+  <div class="modal custom-modal">
+    <button id="closeCustomBtn" class="modal-x" aria-label="Close">✕</button>
+    <h2 id="customTitle" class="custom-title">🤫 Secret lab</h2>
+    <p class="custom-hint">You know the magic words. Decide who the wheel blames…</p>
+    <label class="lbl" for="customNameInput">Rigged name</label>
+    <input id="customNameInput" type="text" maxlength="24" autocomplete="off" spellcheck="false" placeholder="Aahil">
+    <p class="custom-note">Falls back to “Aahil” every time the page loads or refreshes.</p>
+    <div class="modal-actions">
+      <button id="saveCustomBtn" class="btn primary">Save</button>
+      <button id="resetCustomBtn" class="btn ghost">Reset to Aahil</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
